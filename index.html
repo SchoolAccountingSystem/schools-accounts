@@ -187,36 +187,6 @@
       margin-top: 30px;
     }
 
-    .main-preview {
-      position: relative;
-      margin: 55px auto 0;
-      padding: 10px;
-      overflow: hidden;
-      border: 1px solid rgba(134, 165, 255, 0.25);
-      border-radius: 20px;
-      background: linear-gradient(135deg, #36518d, #131b2e);
-      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.4);
-    }
-
-    .main-preview button,
-    .gallery-image {
-      width: 100%;
-      border: 0;
-      background: transparent;
-      cursor: zoom-in;
-    }
-
-    .main-preview img {
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    .image-help {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
     section {
       padding: 75px 0;
     }
@@ -294,6 +264,13 @@
       border-radius: 16px;
       background: var(--surface);
       box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-image {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
     }
 
     .gallery-card img {
@@ -490,12 +467,6 @@
         gap: 30px;
       }
 
-      .main-preview {
-        margin-top: 40px;
-        padding: 5px;
-        border-radius: 13px;
-      }
-
       section {
         padding: 60px 0;
       }
@@ -542,6 +513,7 @@
 <header>
   <div class="container">
     <nav>
+
       <a class="brand" href="#top">
         <img src="logo.png" alt="شعار الحسابات المدرسية">
         <strong>الحسابات <span>المدرسية</span></strong>
@@ -557,6 +529,7 @@
       <a class="button" href="#download">
         تحميل البرنامج
       </a>
+
     </nav>
   </div>
 </header>
@@ -595,26 +568,6 @@
         </a>
 
       </div>
-
-      <div class="main-preview">
-        <button
-          class="zoom-image"
-          type="button"
-          data-image="dashboard.png"
-          data-title="إدارة السنوات الدراسية"
-        >
-          <img
-            src="dashboard.png"
-            alt="واجهة برنامج الحسابات المدرسية"
-            width="1920"
-            height="1020"
-          >
-        </button>
-      </div>
-
-      <p class="image-help">
-        اضغط على الصورة لعرضها بحجم كامل
-      </p>
 
     </div>
   </section>
