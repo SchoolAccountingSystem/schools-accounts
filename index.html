@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+
+  <title>SchoolPro | نظام إدارة المدارس</title>
+  <meta name="description" content="نظام متكامل لإدارة المدارس والحسابات والأقساط والطلاب، بواجهة عربية سهلة وحديثة.">
+
+  <style>
+    :root {
+      --bg: #080d1a;
+      --surface: #10182a;
+      --primary: #5685ff;
+      --text: #f4f7ff;
+      --muted: #9ba8c2;
+      --border: rgba(255,255,255,.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8,13,26,.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 78px;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+      letter-spacing: -.5px;
+    }
+
+    .logo span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      border: 1px solid transparent;
+      transition: .2s;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #7096ff;
+    }
+
+    .button.secondary {
+      background: transparent;
+      border-color: var(--border);
+    }
+
+    .hero {
+      padding: 100px 0 85px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 0%, #182b58 0%, transparent 65%);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 15px;
+      border: 1px solid rgba(86,133,255,.35);
+      border-radius: 30px;
+      color: #a9c0ff;
+      background: rgba(86,133,255,.09);
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: 1.35;
+      margin-bottom: 20px;
+      letter-spacing: -1.5px;
+    }
+
+    h1 span {
+      color: #7fa0ff;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 13px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .preview {
+      margin: 55px auto 0;
+      max-width: 900px;
+      padding: 10px;
+      background: linear-gradient(135deg, #293f71, #131b2e);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      box-shadow: 0 30px 100px rgba(0,0,0,.35);
+    }
+
+    .preview-inner {
+      background: #10182a;
+      border-radius: 10px;
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+      padding: 35px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .preview-inner .screen-icon {
+      font-size: 55px;
+      margin-bottom: 12px;
+    }
+
+    section { padding: 75px 0; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      margin-bottom: 8px;
+    }
+
+    .section-title p { color: var(--muted); }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 27px;
+      transition: .2s;
+    }
+
+    .feature:hover {
+      border-color: rgba(86,133,255,.5);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(86,133,255,.13);
+      font-size: 24px;
+      margin-bottom: 17px;
+    }
+
+    .feature h3 { margin-bottom: 8px; font-size: 19px; }
+    .feature p { color: var(--muted); font-size: 14px; }
+
+    .about {
+      background: #0d1424;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .about h2 {
+      font-size: 34px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .about p { color: var(--muted); }
+
+    .check-list {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .check-list li { margin: 9px 0; }
+    .check-list li::before {
+      content: "✓";
+      color: #75a0ff;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    .info-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-row:last-child { border: 0; }
+    .info-row span { color: var(--muted); }
+
+    .download-card {
+      max-width: 750px;
+      margin: auto;
+      padding: 45px 25px;
+      text-align: center;
+      background: linear-gradient(145deg, #15264a, #10182a);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .download-card p {
+      color: var(--muted);
+      margin: 12px 0 25px;
+    }
+
+    footer {
+      padding: 27px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .features { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .hero { padding: 70px 0 55px; }
+      .preview-inner { min-height: 220px; }
+      .about h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#">School<span>Pro</span></a>
+
+      <div class="nav-links">
+        <a href="#features">المميزات</a>
+        <a href="#about">عن البرنامج</a>
+        <a href="#download">التحميل</a>
+      </div>
+
+      <a class="button" href="#download">جرّب البرنامج</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <span class="badge">حلول برمجية لإدارة المدارس</span>
+
+      <h1>
+        إدارة مدرستك أصبحت<br>
+        <span>أكثر سهولة واحترافية</span>
+      </h1>
+
+      <p>
+        نظام مدرسي يساعدك على تنظيم الحسابات والطلاب والأقساط
+        وإدارة البيانات من خلال واجهة عربية سهلة الاستخدام.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button" href="#download">⬇ تحميل البرنامج</a>
+        <a class="button secondary" href="#features">اكتشف المميزات</a>
+      </div>
+
+      <div class="preview">
+        <div class="preview-inner">
+          <div>
+            <div class="screen-icon">🖥️</div>
+            <h3>ضع صورة واجهة برنامجك هنا</h3>
+            <p>استبدل هذه المساحة بصورة حقيقية من البرنامج.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>كل ما تحتاجه في مكان واحد</h2>
+        <p>أدوات عملية تساعد على تنظيم العمل المدرسي.</p>
+      </div>
+
+      <div class="features">
+        <article class="feature">
+          <div class="feature-icon">👨‍🎓</div>
+          <h3>إدارة الطلاب</h3>
+          <p>تنظيم بيانات الطلاب والصفوف والشعب والوصول إلى المعلومات بسهولة.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">💰</div>
+          <h3>الحسابات والأقساط</h3>
+          <p>متابعة الرسوم الدراسية والمدفوعات والمبالغ المتبقية.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">📊</div>
+          <h3>التقارير المالية</h3>
+          <p>عرض ملخصات مالية وتقارير تساعد الإدارة على متابعة العمل.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">🗂️</div>
+          <h3>تنظيم البيانات</h3>
+          <p>ترتيب سجلات المدرسة بطريقة واضحة تسهّل الوصول إليها.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">🖨️</div>
+          <h3>الطباعة والتصدير</h3>
+          <p>جهّز هذه المساحة لعرض إمكانات الطباعة والتقارير المتوفرة فعلًا.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">🔒</div>
+          <h3>الخصوصية والحماية</h3>
+          <p>توضيح أدوات حماية البيانات والصلاحيات التي يدعمها إصدارك.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div>
+        <h2>صُمّم لتبسيط العمل اليومي</h2>
+        <p>
+          هدف البرنامج هو تقليل الأعمال اليدوية وتسهيل إدارة المعلومات
+          المدرسية من خلال تجربة استخدام واضحة ومنظمة.
+        </p>
+
+        <ul class="check-list">
+          <li>واجهة عربية سهلة الاستخدام</li>
+          <li>تنظيم المعلومات في أقسام واضحة</li>
+          <li>تصميم مناسب للاستخدام اليومي</li>
+          <li>تحديث المعلومات بحسب إمكانات البرنامج</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h3>معلومات البرنامج</h3>
+
+        <div class="info-row">
+          <span>الإصدار</span>
+          <strong>1.0.0</strong>
+        </div>
+
+        <div class="info-row">
+          <span>نظام التشغيل</span>
+          <strong>Windows</strong>
+        </div>
+
+        <div class="info-row">
+          <span>اللغة</span>
+          <strong>العربية</strong>
+        </div>
+
+        <div class="info-row">
+          <span>نوع البرنامج</span>
+          <strong>إدارة مدرسية</strong>
+        </div>
+
+        <div class="info-row">
+          <span>الاتصال بالإنترنت</span>
+          <strong>بحسب الإصدار</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="container">
+      <div class="download-card">
+        <h2>ابدأ باستخدام البرنامج</h2>
+        <p>
+          حمّل النسخة المتاحة واطّلع على إمكانات النظام
+          وطريقة استخدامه.
+        </p>
+
+        <!-- ضع رابط التحميل الحقيقي مكان الرابط أدناه -->
+        <a
+          class="button"
+          href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/releases"
+          target="_blank"
+          rel="noopener noreferrer">
+          ⬇ تحميل البرنامج
+        </a>
+
+        <p style="font-size:12px; margin-top:16px;">
+          يُرجى مراجعة متطلبات التشغيل قبل التثبيت.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <span>© <span id="year"></span> SchoolPro. جميع الحقوق محفوظة.</span>
+    <span>حلول برمجية لإدارة المدارس</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
+
